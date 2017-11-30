@@ -1,0 +1,10 @@
+<resources>
+    <string name="app">YTFH</string>
+    <string name="network_error">Network Error. Please try again later !</string>
+    <string name="no_data_found_try_again">No Data found, please try again.</string>
+    <string name="success">Success</string>
+    <string name="please_wait">Please Wait…</string>
+    <!--alert dialog-->
+    <string name="ok">OK</string>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>

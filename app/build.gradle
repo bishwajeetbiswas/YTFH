@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    flavorDimensions "versionCode"
+    defaultConfig {
+        applicationId "com.biswas.ytfh"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    def final ytfhApplicationId = 'com.biswas.ytfh'
+    productFlavors {
+        playStore {
+            applicationId ytfhApplicationId
+            resValue "string", "app_name", "YTFH"
+            buildConfigField "String", "YTFH_BASE_URL", '"https://stark-spire-93433.herokuapp.com/"'
+        }
+
+        dev {
+            applicationId ytfhApplicationId + ".dev"
+            resValue "string", "app_name", "YTFH Dev"
+            buildConfigField "String", "YTFH_BASE_URL", '"https://stark-spire-93433.herokuapp.com/"'
+        }
+
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    // Retrofit
+    def final retrofitLibVersion = '2.3.0'
+    implementation "com.squareup.retrofit2:retrofit:${retrofitLibVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitLibVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitLibVersion}"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    def final supportLibVersion = '27.0.2'
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation "com.android.support:design:${supportLibVersion}"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.github.simonpercic:oklog3:2.3.0'
+    implementation 'com.jakewharton.timber:timber:4.5.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.google.dagger:dagger:2.8'
+    annotationProcessor "com.google.dagger:dagger-compiler:2.8"
+    provided 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.android.support:cardview-v7:27.0.2'
+}
