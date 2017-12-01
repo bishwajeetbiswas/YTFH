@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -110,8 +109,6 @@ public class HomeActivity extends YtfhBaseActivity {
                 products = mCategories.get(position).mProducts;
                 String categoryName = mCategories.get(position).mName;
                 ProductsActivity.launchActivity(mActivity, categoryName);
-                Log.d("test", "name=" + mCategories.get(position).mName);
-                Log.d("test", "products=" + products.size());
             }
         });
 
@@ -136,24 +133,25 @@ public class HomeActivity extends YtfhBaseActivity {
             spRanking.setSelection(0);
             rvCategories.setAdapter(ra);
         }
-        // rvCategories.setAdapter(new CategoryAdapter(mActivity, rankings));
     }
 
     private ArrayList<Category> calculateList(ArrayList<Category> categories, ArrayList<Product> products) {
-//        ArrayList<Category> categoriesCopy = new ArrayList<>(categories);
-//        ArrayList<Product> productsCopy;
-//        for (int i = 0; i < products.size(); i++) {
-//            for (int j = 0; j < categoriesCopy.size(); j++) {
-//                productsCopy = categoriesCopy.get(j).mProducts;
-//                for (int k = 0; k < productsCopy.size(); k++) {
-//                    if (products.get(i).mId != productsCopy.get(k).mId) {
-//                        productsCopy.remove(productsCopy.get(k));
-//                    }
-//                    if (productsCopy.size() == 0)
-//                        categoriesCopy.remove(categoriesCopy.get(j));
-//                }
-//            }
-//        }
-        return categories;
+        ArrayList<Category> categoriesCopy = new ArrayList<>(categories);
+        ArrayList<Product> productsCopy;
+        for (int i = 0; i < products.size(); i++) {
+            for (int j = 0; j < categoriesCopy.size(); j++) {
+                productsCopy = new ArrayList<>(categoriesCopy.get(j).mProducts);
+                for (int k = 0; k < productsCopy.size(); k++) {
+                    if (products.get(i).mId != productsCopy.get(k).mId)
+                        productsCopy.remove(productsCopy.get(k));
+                }
+            }
+        }
+        for (int i = 0; i < categories.size(); i++) {
+            if (categories.get(i).mProducts.size() == 0) {
+                categoriesCopy.remove(categories.get(i));
+            }
+        }
+        return categoriesCopy;
     }
 }

@@ -2,7 +2,6 @@ package com.biswas.ytfh.app.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -38,7 +37,7 @@ public class CategoryAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         RankingHelpViewHolder rhvh = (RankingHelpViewHolder) holder;
-        Log.d("test", "size=" + mCategories.get(position).mProducts.size());
+
         rhvh.tv_category.setText("" + mCategories.get(position).mName);
     }
 
