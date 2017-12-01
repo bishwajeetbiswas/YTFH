@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.biswas.ytfh.R;
 import com.biswas.ytfh.app.RecyclerViewClickListener;
-import com.biswas.ytfh.app.viewholder.RankingHelpViewHolder;
+import com.biswas.ytfh.app.viewholder.CategoryViewHolder;
 import com.biswas.ytfh.network.response.models.Category;
 
 import java.util.ArrayList;
@@ -30,13 +30,13 @@ public class CategoryAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return (new RankingHelpViewHolder(LayoutInflater.from(mContext)
+        return (new CategoryViewHolder(LayoutInflater.from(mContext)
                 .inflate(R.layout.item_category, parent, false), mListener));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        RankingHelpViewHolder rhvh = (RankingHelpViewHolder) holder;
+        CategoryViewHolder rhvh = (CategoryViewHolder) holder;
 
         rhvh.tv_category.setText("" + mCategories.get(position).mName);
     }

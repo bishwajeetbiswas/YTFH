@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.biswas.ytfh.R;
+import com.biswas.ytfh.app.CommonMethod;
 import com.biswas.ytfh.app.RecyclerViewClickListener;
 import com.biswas.ytfh.app.adapters.ProductAdapter;
 import com.biswas.ytfh.network.response.models.Product;
@@ -47,7 +47,6 @@ public class ProductsActivity extends YtfhBaseActivity {
     @Override
     public void loadValuesFromIntent() {
         categoryName = getIntent().getStringExtra(CATEGORY_NAME);
-        Log.d("test", "categoryName=" + categoryName);
         setToolbarTitle(categoryName);
     }
 
@@ -66,8 +65,7 @@ public class ProductsActivity extends YtfhBaseActivity {
         final ProductAdapter pa = new ProductAdapter(mActivity, products, new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-
-                Log.d("test", "name=" + products.get(position).mName);
+                CommonMethod.showToastMessage(mActivity, products.get(position).mName, false);
             }
         });
         rvProducts.setAdapter(pa);

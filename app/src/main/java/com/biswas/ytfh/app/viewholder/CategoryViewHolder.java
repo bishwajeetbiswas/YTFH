@@ -10,14 +10,14 @@ import com.biswas.ytfh.app.RecyclerViewClickListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RankingHelpViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
     @BindView(R.id.tv_category)
     public TextView tv_category;
     private RecyclerViewClickListener mListener;
 
-    public RankingHelpViewHolder(View itemView,RecyclerViewClickListener listener) {
+    public CategoryViewHolder(View itemView, RecyclerViewClickListener listener) {
         super(itemView);
         mListener=listener;
         itemView.setOnClickListener(this);

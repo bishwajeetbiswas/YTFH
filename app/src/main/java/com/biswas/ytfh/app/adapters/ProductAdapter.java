@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 
 import com.biswas.ytfh.R;
 import com.biswas.ytfh.app.RecyclerViewClickListener;
-import com.biswas.ytfh.app.viewholder.ProductHelpViewHolder;
+import com.biswas.ytfh.app.viewholder.ProductViewHolder;
 import com.biswas.ytfh.network.response.models.Product;
 
 import java.util.ArrayList;
@@ -29,13 +29,13 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return (new ProductHelpViewHolder(LayoutInflater.from(mContext)
+        return (new ProductViewHolder(LayoutInflater.from(mContext)
                 .inflate(R.layout.item_product, parent, false), mListener));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ProductHelpViewHolder rhvh = (ProductHelpViewHolder) holder;
+        ProductViewHolder rhvh = (ProductViewHolder) holder;
         rhvh.tvProductName.setText(mProducts.get(position).mName);
         rhvh.tvDateAdded.setText(mProducts.get(position).mDateAdded);
         rhvh.tvVat.setText(mProducts.get(position).mTax.mName + " : " + mProducts.get(position).mTax.mValue);
@@ -52,7 +52,6 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
             }
         });
-        //rhvh.spVariants.setSelection(0);
     }
 
     @Override

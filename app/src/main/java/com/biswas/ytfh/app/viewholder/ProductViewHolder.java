@@ -11,7 +11,7 @@ import com.biswas.ytfh.app.RecyclerViewClickListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProductHelpViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
     @BindView(R.id.tv_product_name)
@@ -24,9 +24,9 @@ public class ProductHelpViewHolder extends RecyclerView.ViewHolder implements Vi
     public AppCompatSpinner spVariants;
     private RecyclerViewClickListener mListener;
 
-    public ProductHelpViewHolder(View itemView,RecyclerViewClickListener listener) {
+    public ProductViewHolder(View itemView, RecyclerViewClickListener listener) {
         super(itemView);
-        mListener=listener;
+        mListener = listener;
         itemView.setOnClickListener(this);
         ButterKnife.bind(this, itemView);
     }
